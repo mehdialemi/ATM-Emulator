@@ -12,7 +12,7 @@ public class BankApiPaths {
 
 
 	public final static String CARD = "/card";
-	public final static String DEPOSIT = "/deposit";
+	public final static String DEPOSIT = "/controller";
 	public final static String WITHDRAW = "/withdraw";
 	public final static String CHECK_BALANCE = "/check_balance";
 
