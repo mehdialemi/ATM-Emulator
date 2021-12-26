@@ -46,7 +46,7 @@ public class CardService {
 
 		CardAuth auth = new CardAuth();
 		auth.setBlocked(false);
-		auth.setOption(CardAuthOption.PIN);
+		auth.setCardAuthOption(CardAuthOption.PIN);
 		card.setCardAuth(auth);
 
 		return repository.save(card);
@@ -126,7 +126,7 @@ public class CardService {
 	public void changeAuthOption(String cardNumber, CardAuthOption option) throws CardNotFountException {
 		Card card = getCard(cardNumber);
 		CardAuth cardAuth = card.getCardAuth();
-		cardAuth.setOption(option);
+		cardAuth.setCardAuthOption(option);
 		card.setCardAuth(cardAuth);
 		repository.save(card);
 	}

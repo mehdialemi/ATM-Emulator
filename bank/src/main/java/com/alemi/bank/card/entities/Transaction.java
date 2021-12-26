@@ -16,6 +16,7 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Enumerated(EnumType.ORDINAL)
 	@Column
 	private OperationType operationType;
 
@@ -30,7 +31,7 @@ public class Transaction {
 	private Date date = new Date();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "card_id", nullable = false)
+	@JoinColumn(name = "cardId", referencedColumnName = "id", nullable = false)
 	private Card card;
 
 	@Column

@@ -32,7 +32,7 @@ public class CardTest {
 		Assert.assertEquals("12", card.getCardNumber());
 		Assert.assertEquals(1234, card.getPinCode().intValue());
 		Assert.assertEquals("abcd", card.getFingerprint());
-		Assert.assertEquals(CardAuthOption.PIN, card.getCardAuth().getOption());
+		Assert.assertEquals(CardAuthOption.PIN, card.getCardAuth().getCardAuthOption());
 	}
 
 	@Test

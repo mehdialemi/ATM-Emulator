@@ -5,13 +5,15 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Data
 @Embeddable
 public class CardAuth {
 
-	@Column
-	private CardAuthOption option = CardAuthOption.PIN;
+	@Enumerated(EnumType.ORDINAL)
+	private CardAuthOption cardAuthOption = CardAuthOption.PIN;
 
 	@Column
 	private Integer unsuccessfulAttempts = 0;

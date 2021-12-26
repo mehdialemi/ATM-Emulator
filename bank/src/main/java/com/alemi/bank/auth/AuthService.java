@@ -35,7 +35,7 @@ public class AuthService {
 
 		checkBlocked(card);
 
-		if (CardAuthOption.PIN != card.getCardAuth().getOption()) {
+		if (CardAuthOption.PIN != card.getCardAuth().getCardAuthOption()) {
 			throw new AuthOptionException("Card authentication is not set by pin");
 		}
 
@@ -55,7 +55,7 @@ public class AuthService {
 
 		checkBlocked(card);
 
-		if (card.getCardAuth().getOption() != CardAuthOption.FINGERPRINT) {
+		if (card.getCardAuth().getCardAuthOption() != CardAuthOption.FINGERPRINT) {
 			throw new AuthOptionException("Card authentication is not set by fingerprint");
 		}
 
@@ -72,7 +72,7 @@ public class AuthService {
 		log.debug("Request to get auth option for card number: {}", cardNumber);
 
 		Card card = cardService.getCard(cardNumber);
-		return card.getCardAuth().getOption();
+		return card.getCardAuth().getCardAuthOption();
 	}
 
 	public void changeAuthOption(String cardNumber, CardAuthOption option) throws CardNotFountException {

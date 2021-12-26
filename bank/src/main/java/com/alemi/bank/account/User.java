@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table
-public class UserInfo {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +33,6 @@ public class UserInfo {
 	private String address;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "userInfo", fetch = FetchType.LAZY)
-	private Set<Card> cardSet = new HashSet <>();
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private Set<Card> cards = new HashSet <>();
 }

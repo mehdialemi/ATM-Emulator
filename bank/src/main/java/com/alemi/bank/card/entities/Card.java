@@ -1,6 +1,6 @@
 package com.alemi.bank.card.entities;
 
-import com.alemi.bank.account.UserInfo;
+import com.alemi.bank.account.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -25,8 +25,8 @@ public class Card {
 	private BigDecimal balance = BigDecimal.ZERO;
 
 	@ManyToOne
-	@JoinColumn(name = "user_info_id")
-	private UserInfo userInfo;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@Column
 	private Integer pinCode;
