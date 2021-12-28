@@ -1,3 +1,5 @@
-com/alemi/atm/config/SwaggerConfig.class
-com/alemi/atm/config/AtmPaths.class
+com/alemi/atm/controller/AtmController.class
+com/alemi/atm/communication/BankService.class
+com/alemi/atm/communication/BankConnector.class
 com/alemi/atm/AtmApplication.class
+com/alemi/atm/printer/PrintService.class

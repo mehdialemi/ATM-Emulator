@@ -6,6 +6,7 @@
     <modules>
         <module>atm</module>
         <module>bank</module>
+        <module>common</module>
     </modules>
 
     <parent>
@@ -20,6 +21,9 @@
     <packaging>pom</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <java.version>11</java.version>
         <resilience4j.version>1.7.1</resilience4j.version>
     </properties>

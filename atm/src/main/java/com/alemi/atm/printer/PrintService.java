@@ -1,7 +1,6 @@
 package com.alemi.atm.printer;
 
-import com.alemi.atm.controller.AtmRequest;
-import com.alemi.bank.card.models.CardResponse;
+import com.alemi.common.models.BankOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +8,15 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class PrintService {
 
-	public void printDeposit(AtmRequest request) {
+	public void printDeposit(BankOperation request) {
 		log.info("Successfully controller request: {}", request);
 	}
 
-	public void printWithdraw(AtmRequest request) {
+	public void printWithdraw(BankOperation request) {
 		log.info("Successfully withdraw request: {}", request);
 	}
 
-	public void printBalance(CardResponse response) {
+	public void printBalance(BankOperation response) {
 		log.info("Balance: {}", response);
 	}
 }

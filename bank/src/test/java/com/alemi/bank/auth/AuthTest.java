@@ -1,16 +1,17 @@
 package com.alemi.bank.auth;
 
-import com.alemi.bank.auth.exceptions.AuthOptionException;
-import com.alemi.bank.auth.exceptions.CardIsBlockedException;
-import com.alemi.bank.auth.exceptions.InvalidPinException;
-import com.alemi.bank.auth.models.AuthRequest;
-import com.alemi.bank.auth.models.AuthResponse;
-import com.alemi.bank.card.CardService;
-import com.alemi.bank.card.entities.Card;
-import com.alemi.bank.card.exceptions.CardNotFountException;
-import com.alemi.bank.card.exceptions.DuplicatedCardException;
-import com.alemi.bank.card.models.CardAuthOption;
-import com.alemi.bank.common.BankException;
+import com.alemi.bank.services.AuthService;
+import com.alemi.bank.exceptions.auth.AuthOptionException;
+import com.alemi.bank.exceptions.auth.CardIsBlockedException;
+import com.alemi.bank.exceptions.auth.InvalidPinException;
+import com.alemi.common.exceptions.AtmException;
+import com.alemi.common.models.AuthRequest;
+import com.alemi.common.models.AuthResponse;
+import com.alemi.bank.services.CardService;
+import com.alemi.bank.entities.Card;
+import com.alemi.bank.exceptions.card.CardNotFountException;
+import com.alemi.bank.exceptions.card.DuplicatedCardException;
+import com.alemi.common.models.CardAuthOption;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,14 +32,14 @@ public class AuthTest {
 	private AuthService authService;
 
 	@Test
-	public void testLoginByPin() throws BankException {
+	public void testLoginByPin() throws AtmException {
 		cardService.create("12", 1234, "abcd");
 		AuthResponse authResponse = authService.loginByPin("12", 1234);
 		Assert.assertTrue(authResponse.getOperations().size() > 0);
 	}
 
 	@Test
-	public void testLoginByFingerprint() throws BankException {
+	public void testLoginByFingerprint() throws AtmException {
 		cardService.create("12", 1234, "abcd");
 		authService.changeAuthOption("12", CardAuthOption.FINGERPRINT);
 		AuthResponse authResponse = authService.loginByFingerprint("12", "abcd");
@@ -51,7 +52,7 @@ public class AuthTest {
 
 		try {
 			authService.loginByPin("12", 12);
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof InvalidPinException);
 		}
 
@@ -68,36 +69,36 @@ public class AuthTest {
 
 		try {
 			authService.loginByPin("12", 12);
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof InvalidPinException);
 		}
 
 		try {
 			authService.loginByPin("12", 12);
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof InvalidPinException);
 		}
 
 		try {
 			authService.loginByPin("12", 12);
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof InvalidPinException);
 		}
 
 		try {
 			authService.loginByPin("12", 12);
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof CardIsBlockedException);
 		}
 	}
 
 	@Test
-	public void testAuthOption() throws BankException {
+	public void testAuthOption() throws AtmException {
 		cardService.create("12", 1234, "abcd");
 
 		try {
 			authService.loginByFingerprint("12", "abcd");
-		} catch (BankException e) {
+		} catch (AtmException e) {
 			Assert.assertTrue(e instanceof AuthOptionException);
 		}
 

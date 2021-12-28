@@ -1,3 +1,5 @@
-/home/mehdi/atmemulator/atm/src/main/java/com/alemi/atm/config/AtmPaths.java
-/home/mehdi/atmemulator/atm/src/main/java/com/alemi/atm/config/SwaggerConfig.java
-/home/mehdi/atmemulator/atm/src/main/java/com/alemi/atm/AtmApplication.java
+/home/mehdi/ATM-Emulator/atm/src/main/java/com/alemi/atm/controller/AtmController.java
+/home/mehdi/ATM-Emulator/atm/src/main/java/com/alemi/atm/communication/BankService.java
+/home/mehdi/ATM-Emulator/atm/src/main/java/com/alemi/atm/AtmApplication.java
+/home/mehdi/ATM-Emulator/atm/src/main/java/com/alemi/atm/printer/PrintService.java
+/home/mehdi/ATM-Emulator/atm/src/main/java/com/alemi/atm/communication/BankConnector.java
