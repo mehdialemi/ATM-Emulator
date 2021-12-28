@@ -25,15 +25,35 @@ management:
       enabled: true
     ratelimiters:
       enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus
+          - health
+          - info
+          - metric
   endpoint:
     health:
       show-details: always
-
+    prometheus:
+      enabled: true
 
 resilience4j:
   circuitbreaker:
     metrics:
       enabled: true
+    configs:
+      default:
+        slidingWindowSize: 100
+        permittedNumberOfCallsInHalfOpenState: 10
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 60
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+        someShared:
+          slidingWindowSize: 50
+          permittedNumberOfCallsInHalfOpenState: 10
   bulkhead:
     instances:
       bankService:

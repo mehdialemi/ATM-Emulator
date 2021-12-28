@@ -30,11 +30,31 @@ resilience4j:
         sliding-window-size: 10
         wait-duration-in-open-state: 5s
         sliding-window-type: COUNT_BASED
+  circuitbreaker:
+    backends:
+      atmService:
+        ringBufferSizeInClosedState: 5
+        ringBufferSizeInHalfOpenState: 3
+        waitInterval: 5000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
 
 management:
   health:
     circuitbreakers:
       enabled: true
+    ratelimiters:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - prometheus
+        - health
+        - info
+        - metric
   endpoint:
     health:
       show-details: always
+    prometheus:
+      enabled: true

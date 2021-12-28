@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 @RequestMapping(ApiPaths.ROOT)
 public class AtmController {
 
-	public final static String ATM_SERVICE = "AtmService";
+	public final static String ATM_SERVICE = "atmService";
 
 	@Autowired
 	private BankConnector bankConnector;
@@ -41,7 +41,6 @@ public class AtmController {
 		printService.printDeposit(atmRequest);
 	}
 
-
 	@PostMapping(ApiPaths.Atm.WITHDRAW)
 	@CircuitBreaker(name = ATM_SERVICE, fallbackMethod = "fallback")
 	public void withdraw(@RequestBody BankOperation atmRequest) {
@@ -59,7 +58,7 @@ public class AtmController {
 		printService.printBalance(response);
 	}
 
-	public ResponseEntity<String> bankFallback(Throwable e) {
+	public ResponseEntity<String> fallback(Throwable e) {
 		return new ResponseEntity <>(e.getMessage(), HttpStatus.BAD_GATEWAY);
 	}
 }

@@ -8,6 +8,7 @@ import com.alemi.common.exceptions.AtmException;
 import com.alemi.common.exceptions.ErrorResponse;
 import com.alemi.common.models.BankOperation;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,14 @@ public class CardController {
 
 	@PostMapping(ApiPaths.Bank.DEPOSIT)
 	@CircuitBreaker(name = BANK_SERVICE, fallbackMethod = "fallback")
+	@Timed(value = "bank_deposit")
 	public BankOperation deposit(@RequestBody BankOperation request) throws CardNotFountException {
 		return cardService.deposit(request.getCardNumber(), BigDecimal.valueOf(request.getAmount()));
 	}
 
 	@PostMapping(ApiPaths.Bank.WITHDRAW)
 	@CircuitBreaker(name = BANK_SERVICE, fallbackMethod = "fallback")
+	@Timed(value = "bank_withdraw")
 	public BankOperation withdraw(@RequestBody BankOperation request) throws
 			CardNotFountException, BalanceInsufficientException {
 		return cardService.withdraw(request.getCardNumber(), BigDecimal.valueOf(request.getAmount()));
@@ -37,10 +40,12 @@ public class CardController {
 
 	@GetMapping(ApiPaths.Bank.CHECK_BALANCE)
 	@CircuitBreaker(name = BANK_SERVICE, fallbackMethod = "fallback")
+	@Timed(value = "bank_check_balance")
 	public BankOperation checkBalance(@RequestParam("cardNumber") String cardNumber) throws CardNotFountException {
 		return cardService.getBalance(cardNumber);
 	}
 
+	@Timed(value = "bank_internal_error")
 	public ResponseEntity<String> fallback(AtmException e) {
 		ErrorResponse errorResponse = e.getErrorResponse();
 		HttpStatus httpStatus = HttpStatus.resolve(errorResponse.getHttpCode());
