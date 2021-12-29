@@ -8,8 +8,8 @@ bank:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/bankdb?createDatabaseIfNotExist=true
-    username: admin
+    url: jdbc:mysql://alemi:3306/bankdb?createDatabaseIfNotExist=true
+    username: alemi
     password: 3S!amShahr
     hikari:
       connection-timeout: 30000
