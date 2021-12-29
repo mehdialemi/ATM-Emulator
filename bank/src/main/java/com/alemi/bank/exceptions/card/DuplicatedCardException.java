@@ -7,6 +7,6 @@ public class DuplicatedCardException extends AtmException {
 	public final static int ErrorCode = 1002;
 
 	public DuplicatedCardException(String cardNumber) {
-		super("Already exist card number: " + cardNumber, ErrorCode);
+		super("Already exist card cardNumber: " + cardNumber, ErrorCode);
 	}
 }

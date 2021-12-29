@@ -5,13 +5,14 @@ import com.alemi.bank.exceptions.auth.AuthOptionException;
 import com.alemi.bank.exceptions.auth.CardIsBlockedException;
 import com.alemi.bank.exceptions.auth.InvalidPinException;
 import com.alemi.common.exceptions.AtmException;
-import com.alemi.common.models.AuthRequest;
-import com.alemi.common.models.AuthResponse;
+import com.alemi.common.models.auth.AuthPincode;
+import com.alemi.common.models.auth.AuthRequest;
+import com.alemi.common.models.auth.AuthResponse;
 import com.alemi.bank.services.CardService;
 import com.alemi.bank.entities.Card;
 import com.alemi.bank.exceptions.card.CardNotFountException;
 import com.alemi.bank.exceptions.card.DuplicatedCardException;
-import com.alemi.common.models.CardAuthOption;
+import com.alemi.common.models.auth.CardAuthOption;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,7 +66,9 @@ public class AuthTest {
 		cardService.create("12", 1234, "abcd");
 		AuthRequest request = new AuthRequest();
 		request.setCardNumber("12");
-		request.setPinCode(12);
+		AuthPincode pincode = new AuthPincode();
+		pincode.setCode(12);
+		request.setPin(pincode);
 
 		try {
 			authService.loginByPin("12", 12);

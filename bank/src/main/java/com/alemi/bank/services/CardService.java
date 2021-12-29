@@ -6,11 +6,11 @@ import com.alemi.bank.entities.Transaction;
 import com.alemi.bank.exceptions.card.BalanceInsufficientException;
 import com.alemi.bank.exceptions.card.CardNotFountException;
 import com.alemi.bank.exceptions.card.DuplicatedCardException;
-import com.alemi.common.models.CardAuthOption;
+import com.alemi.common.models.auth.CardAuthOption;
 import com.alemi.bank.repositories.CardRepository;
 import com.alemi.bank.repositories.TransactionRepository;
-import com.alemi.common.models.BankOperation;
-import com.alemi.common.models.OperationType;
+import com.alemi.common.models.transaction.BankOperation;
+import com.alemi.common.models.transaction.OperationType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class CardService {
 			throw new DuplicatedCardException(cardNumber);
 		}
 
-		log.info("Creating new card with card number: {}", cardNumber);
+		log.info("Creating new card with card cardNumber: {}", cardNumber);
 
 		Card card = new Card();
 		card.setCardNumber(cardNumber);
@@ -55,14 +55,14 @@ public class CardService {
 	@Transactional
 	public BankOperation getBalance(String cardNumber) throws CardNotFountException {
 		Card card = getCard(cardNumber);
-		log.info("Get balance for card number: {}", cardNumber);
+		log.info("Get balance for card cardNumber: {}", cardNumber);
 		return createResponse(cardNumber, card.getBalance(), OperationType.CHECK_BALANCE);
 	}
 
 	@Transactional
 	public BankOperation deposit(String cardNumber, BigDecimal amount) throws CardNotFountException {
 		Card card = getCard(cardNumber);
-		log.info("Deposit {} amount for card number {}", amount, cardNumber);
+		log.info("Deposit {} amount for card cardNumber {}", amount, cardNumber);
 
 		Transaction transaction = new Transaction();
 		transaction.setCard(card);
@@ -81,7 +81,7 @@ public class CardService {
 	public BankOperation withdraw(String cardNumber, BigDecimal amount) throws CardNotFountException, BalanceInsufficientException {
 		Card card = getCard(cardNumber);
 
-		log.info("Withdraw {} amount for card number {}", amount, cardNumber);
+		log.info("Withdraw {} amount for card cardNumber {}", amount, cardNumber);
 
 		if (card.getBalance().subtract(amount).doubleValue() < 0.0)
 			throw new BalanceInsufficientException(cardNumber, amount);

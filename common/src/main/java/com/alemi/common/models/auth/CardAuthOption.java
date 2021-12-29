@@ -1,4 +1,4 @@
-package com.alemi.common.models;
+package com.alemi.common.models.auth;
 
 public enum CardAuthOption {
 	PIN,

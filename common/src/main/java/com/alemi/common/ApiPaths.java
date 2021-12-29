@@ -7,9 +7,15 @@ public class ApiPaths {
 	public static class Atm {
 		public final static String ATM_ROOT = ROOT + "/atm";
 
-		public final static String DEPOSIT = ATM_ROOT + "/controller";
-		public final static String WITHDRAW = ATM_ROOT + "/withdraw";
-		public final static String CHECK_BALANCE = ATM_ROOT + "/check_balance";
+		public final static String TRANSACTION = ATM_ROOT + "/transaction";
+		public final static String DEPOSIT = TRANSACTION + "/controller";
+		public final static String WITHDRAW = TRANSACTION + "/withdraw";
+		public final static String CHECK_BALANCE = TRANSACTION + "/check_balance";
+
+		public final static String AUTH = ATM_ROOT + "/auth";
+		public final static String LOGIN_BY_PIN = AUTH + "/login/pincode";
+		public final static String LOGIN_BY_FINGERPRINT = AUTH + "/login/fingerprint";
+
 	}
 
 	public static class Bank {

@@ -6,6 +6,6 @@ public class CardIsBlockedException extends AtmException {
 	public final static int ErrorCode = 2002;
 
 	public CardIsBlockedException(String cardNumber) {
-		super("Card is blocked: " + cardNumber, ErrorCode);
+		super("CardInfo is blocked: " + cardNumber, ErrorCode);
 	}
 }

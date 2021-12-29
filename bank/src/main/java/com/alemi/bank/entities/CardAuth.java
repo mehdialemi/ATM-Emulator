@@ -1,6 +1,6 @@
 package com.alemi.bank.entities;
 
-import com.alemi.common.models.CardAuthOption;
+import com.alemi.common.models.auth.CardAuthOption;
 import lombok.Data;
 
 import javax.persistence.Column;

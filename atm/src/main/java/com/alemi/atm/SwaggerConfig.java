@@ -1,4 +1,4 @@
-package com.alemi.common.configs;
+package com.alemi.atm;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

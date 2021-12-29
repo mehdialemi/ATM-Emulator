@@ -1,4 +1,4 @@
-package com.alemi.common.models;
+package com.alemi.common.models.transaction;
 
 public enum OperationType {
 	WITHDRAW,

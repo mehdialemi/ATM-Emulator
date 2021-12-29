@@ -6,8 +6,8 @@ import com.alemi.bank.exceptions.card.BalanceInsufficientException;
 import com.alemi.bank.exceptions.card.CardNotFountException;
 import com.alemi.bank.exceptions.card.DuplicatedCardException;
 import com.alemi.bank.services.CardService;
-import com.alemi.common.models.CardAuthOption;
-import com.alemi.common.models.BankOperation;
+import com.alemi.common.models.auth.CardAuthOption;
+import com.alemi.common.models.transaction.BankOperation;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ import java.math.BigDecimal;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class CardTest {
+public class CardInfoTest {
 
 	@Autowired
 	private CardService cardService;

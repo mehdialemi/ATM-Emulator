@@ -1,5 +1,6 @@
-package com.alemi.common.models;
+package com.alemi.common.models.auth;
 
+import com.alemi.common.models.transaction.OperationType;
 import lombok.Data;
 
 import java.util.ArrayList;

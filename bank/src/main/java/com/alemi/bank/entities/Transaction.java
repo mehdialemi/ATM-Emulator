@@ -1,6 +1,6 @@
 package com.alemi.bank.entities;
 
-import com.alemi.common.models.OperationType;
+import com.alemi.common.models.transaction.OperationType;
 import lombok.Data;
 
 import javax.persistence.*;
